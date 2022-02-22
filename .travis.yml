@@ -2,22 +2,18 @@ language: java
 
 matrix:
    include:
-      # always build this environment
       - os: linux
         dist: xenial
         jdk: openjdk11
-        env: ADDITIONAL_MAVEN_ARGS="-Pjacoco coveralls:report"
-      # only on PR
+        env: ADDITIONAL_MAVEN_ARGS="-Montana coveralls:report"
       - os: linux
         dist: xenial
         jdk: openjdk8
         if: type IN (pull_request)
-      # only on PR or after merging a PR
       - os: osx
         osx_image: xcode10.1
         if: type IN (pull_request) OR commit_message =~ /^Merge pull request/
 
-# skip installation step
 install: true
 
 cache:
